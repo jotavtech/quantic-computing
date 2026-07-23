@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Log bruto da execução 0x1F no QPU ARARA-27 — calibração, surface code d=3 e as leituras que não deveriam ter acontecido.">
+  <title>~/quantic-computing: qpu-run-0x1F.log</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0a0a'/%3E%3Crect x='3' y='4' width='6' height='9' fill='%2333ff66'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="crt" aria-hidden="true"></div>
+
+  <main class="terminal" id="terminal">
+    <div id="boot" aria-live="polite"></div>
+    <div id="log"></div>
+
+    <section id="final-zone" hidden>
+      <div class="seal">
+        <div class="seal-top" id="seal-top"></div>
+        <div id="seal-lines"></div>
+      </div>
+      <button id="final-btn" type="button">
+        <span class="warn-icon" aria-hidden="true">⚠</span>
+        <span id="btn-label"></span>
+      </button>
+      <p class="microcopy" id="microcopy"></p>
+      <div class="line cmd end-prompt">
+        <span class="prompt">user@qlab:~$</span> <span class="cursor" aria-hidden="true">▊</span>
+      </div>
+    </section>
+
+    <noscript>
+      <p class="line dim"># javascript desabilitado — impossível decodificar o log binário.</p>
+    </noscript>
+  </main>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
