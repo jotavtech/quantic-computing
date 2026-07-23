@@ -17,9 +17,27 @@
 
   let fired = false; // true depois do clique no botão final
 
-  // P2 (caminho aberto): ?v=OUTRO_ID troca o vídeo-alvo sem editar código
+  // P2 (caminho aberto): ?v=OUTRO_ID troca o vídeo-alvo (mesma plataforma) sem editar código
   const qsVideo = new URLSearchParams(location.search).get("v") || "";
-  const videoId = /^[A-Za-z0-9_-]{6,20}$/.test(qsVideo) ? qsVideo : CONTENT.videoId;
+  const videoId = /^[A-Za-z0-9_-]{6,24}$/.test(qsVideo) ? qsVideo : CONTENT.video.id;
+  const videoPlatform = CONTENT.video.platform;
+
+  function embedUrl(platform, id) {
+    if (platform === "tiktok") {
+      return (
+        "https://www.tiktok.com/player/v1/" +
+        id +
+        "?autoplay=1&loop=1&controls=0&progress_bar=0&play_button=0" +
+        "&volume_control=0&fullscreen_button=0&timestamp=0" +
+        "&music_info=0&description=0&rel=0&closed_caption=0&native_context_menu=0"
+      );
+    }
+    return (
+      "https://www.youtube.com/embed/" +
+      id +
+      "?autoplay=1&playsinline=1&rel=0&modestbranding=1"
+    );
+  }
 
   // ---------- helpers de renderização ----------
 
@@ -184,11 +202,8 @@
     overlay.id = "video-overlay";
 
     const iframe = document.createElement("iframe");
-    iframe.src =
-      "https://www.youtube.com/embed/" +
-      videoId +
-      "?autoplay=1&playsinline=1&rel=0&modestbranding=1";
-    iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+    iframe.src = embedUrl(videoPlatform, videoId);
+    iframe.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
     iframe.allowFullscreen = true;
     iframe.title = "…";
     overlay.appendChild(iframe);

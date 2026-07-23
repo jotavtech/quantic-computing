@@ -17,8 +17,12 @@
 // ============================================================================
 
 const CONTENT = {
-  // Vídeo-alvo. Pode ser sobrescrito via query string: ?v=OUTRO_ID
-  videoId: "dQw4w9WgXcQ",
+  // Vídeo-alvo. platform: "youtube" | "tiktok". id pode ser sobrescrito
+  // via query string: ?v=OUTRO_ID (mesma plataforma configurada abaixo).
+  video: {
+    platform: "tiktok",
+    id: "7663650136920198407",
+  },
 
   // Texto de revelação piscando por cima do vídeo (desligue com enabled:false)
   reveal: {
